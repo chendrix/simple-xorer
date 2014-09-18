@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/xorer'
+require 'xorer'
 
 if ARGV[0].nil? || ARGV[0].empty?
   puts "need a key"
