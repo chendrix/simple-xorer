@@ -56,8 +56,8 @@ module Xorer
   end
 
   def self.xor(val_1, val_2)
-    BinaryString.new(val_1).xor(
-      BinaryString.new(val_2)
+    BinaryString.new(val_1.to_s).xor(
+      BinaryString.new(val_2.to_s)
     )
   end
 end

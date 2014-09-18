@@ -40,8 +40,7 @@ module Xorer
     end
 
     def xor(other)
-      list = adjusted_to_size_of(other)
-      other_list = other.adjusted_to_size_of(list)
+      list, other_list = self.class.make_both_same_length(self, other)
 
       xored_list = list.token_list
         .zip(other_list.token_list)
@@ -50,6 +49,13 @@ module Xorer
         end
 
       TokenList.new(xored_list)
+    end
+
+    def self.make_both_same_length(first, second)
+      first_adjusted = first.adjusted_to_size_of(second)
+      second_adjusted = second.adjusted_to_size_of(first_adjusted)
+
+      [first_adjusted, second_adjusted]
     end
 
     def each(&block)

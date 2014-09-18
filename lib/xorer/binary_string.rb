@@ -27,21 +27,28 @@ module Xorer
       self
     end
 
+    def to_integers
+      binary_string.chars.map(&:to_i)
+    end
+
     def xor(other)
-      binary = pad_with_zeros(other.length)
-      other_binary = other.pad_with_zeros(binary.length)
+      binary, other_binary = self.class.make_both_same_length(self, other)
 
-      integers = binary.binary_string.chars.map(&:to_i)
-      other_integers = other_binary.binary_string.chars.map(&:to_i)
-
-      xored_string = integers
-          .zip(other_integers)
+      xored_string = binary.to_integers
+          .zip(other_binary.to_integers)
           .map do |elements|
             elements.first ^ elements.last
           end
           .join('')
 
       BinaryString.new(xored_string)
+    end
+
+    def self.make_both_same_length(first, second)
+      first_padded = first.pad_with_zeros(second.length)
+      second_padded = second.pad_with_zeros(first_padded.length)
+
+      [first_padded, second_padded]
     end
 
     def length
@@ -51,6 +58,8 @@ module Xorer
     def pad_with_zeros(length)
       BinaryString.new(binary_string.rjust(length, '0'))
     end
+
+
 
     def binary_string
       token

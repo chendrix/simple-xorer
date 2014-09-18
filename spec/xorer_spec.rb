@@ -10,7 +10,7 @@ describe Xorer do
   end
 
   it 'xors two binary values' do
-    expect(Xorer.xor(0, 0)).to eql('0')
+    expect(Xorer.xor(0, 0)).to eq('0')
   end
 
   it 'xors two binary strings' do
