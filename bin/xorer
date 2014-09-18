@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require './lib/xorer'
+
+if ARGV[0].nil? || ARGV[0].empty?
+  puts "need a key"
+  exit 1
+else
+  key = ARGV[0]
+end
+
+if ARGV[1].nil? || ARGV[1].empty?
+  puts "need an input file"
+  exit 1
+else
+  input_file = ARGV[1]
+end
+
+if ARGV[2].nil? || ARGV[2].empty?
+  puts "need an output file"
+  exit 1
+else
+  output_file = ARGV[2]
+end
+
+Xorer.run(key, input_file, output_file)
+
