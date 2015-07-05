@@ -59,8 +59,6 @@ module Xorer
       BinaryString.new(binary_string.rjust(length, '0'))
     end
 
-
-
     def binary_string
       token
     end
